@@ -12,4 +12,12 @@ public class RacingProgress {
             }
         }
     }
+
+    public static void printCarMoveDistance(
+            List<String> carName,
+            List<String> carMoveDistance){
+        for (int i = 0; i < carName.size(); i++){
+            System.out.println(carName.get(i) + " : " + carMoveDistance.get(i));
+        }
+    }
 }
