@@ -1,9 +1,11 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Car;
 import racingcar.service.RacingCarService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarController {
     private final RacingCarService racingCarService = new RacingCarService();
@@ -15,8 +17,13 @@ public class RacingCarController {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(Console.readLine());
 
-        List<String> racingWinnerList = racingCarService.Racing(carsName, tryCount);
+        List<Car> cars = racingCarService.setGame(carsName);
 
-        System.out.println("최종 우승자 : " + String.join(", ", racingWinnerList));
+        List<Car> winners = racingCarService.runGame(cars, tryCount);
+
+        System.out.println("\n최종 우승자 : " +
+                winners.stream()
+                        .map(Car::getName)
+                        .collect(Collectors.joining(", ")));
     }
 }
