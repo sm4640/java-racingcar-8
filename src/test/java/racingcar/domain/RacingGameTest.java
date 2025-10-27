@@ -12,7 +12,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("가장 멀리간 사람이 우승자이며, 동점자까지 우승자")
     void getWinnerCorrect() {
-        List<Car> cars =List.of(
+        List<Car> cars = List.of(
                 new Car("pobi", 3),
                 new Car("tobi", 5),
                 new Car("tubi", 5)

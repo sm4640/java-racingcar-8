@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class RacingCarController {
     private final RacingCarService racingCarService = new RacingCarService();
 
-    public void run(){
+    public void run() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carsName = Console.readLine();
 

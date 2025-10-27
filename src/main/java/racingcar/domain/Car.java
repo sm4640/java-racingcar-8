@@ -10,7 +10,7 @@ public class Car {
         this.name = name;
     }
 
-    public Car(String name, int distance){
+    public Car(String name, int distance) {
         this.validateName(name);
         this.name = name;
         this.distance = distance;

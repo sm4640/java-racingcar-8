@@ -15,6 +15,7 @@ public class RacingCarService {
                 .toList();
         return cars;
     }
+
     public List<Car> runGame(List<Car> cars, int tryCount) {
         RacingGame game = new RacingGame(cars);
 

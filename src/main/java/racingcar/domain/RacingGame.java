@@ -25,7 +25,7 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getWinners(){
+    public List<Car> getWinners() {
         int maxDistance = cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
