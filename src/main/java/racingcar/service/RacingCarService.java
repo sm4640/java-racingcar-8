@@ -1,26 +1,30 @@
 package racingcar.service;
 
-import racingcar.util.RacingEnd;
-import racingcar.util.RacingProgress;
-import racingcar.util.RacingSet;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarService {
-    public List<String> Racing(String carsName, int tryCount){
 
-        List<String> carNameList = RacingSet.setCarNameList(carsName);
-        List<String> carMoveDistance = new ArrayList<>(Collections.nCopies(carNameList.size(), ""));
+    public List<Car> setGame(String inputNames) {
+        List<Car> cars = Arrays.stream(inputNames.split(","))
+                .map(String::trim)
+                .map(Car::new)
+                .toList();
+        return cars;
+    }
+    public List<Car> runGame(List<Car> cars, int tryCount) {
+        RacingGame game = new RacingGame(cars);
 
-        for (int round = 0; round < tryCount; round++){
-            System.out.println("\n실행 결과");
-            RacingProgress.updateCarMoveDistance(carMoveDistance);
-            RacingProgress.printCarMoveDistance(carNameList ,carMoveDistance);
-            System.out.println();
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < tryCount; i++) {
+            game.playRound();
+            game.printCarMoveDistance();
         }
 
-        return RacingEnd.checkWinner(carNameList, carMoveDistance);
+        List<Car> winners = game.getWinners();
+        return winners;
     }
 }
